@@ -24,7 +24,7 @@ class LocalDateTimeExtensionsTest {
 
         val days = start.hourUntil(end)
 
-        assertThat(days).isEqualTo(2)
+        assertThat(days).isEqualTo(48)
     }
 
     @Test

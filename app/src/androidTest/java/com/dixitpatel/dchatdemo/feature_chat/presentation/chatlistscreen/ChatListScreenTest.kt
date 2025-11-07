@@ -85,6 +85,9 @@ class ChatListScreenTest {
 
     @Test
     fun givenUserSheetIsHidden_whenUserSelectionArrowIsClicked_thenUserSheetIsDisplayed() {
+        uiStateFlow.value = uiStateFlow.value.copy(isLoading = false)
+        every { fakeViewModel.uiState } returns uiStateFlow
+
         // Act
         composeTestRule.onNodeWithTag("arrowBtn").performClick()
 
@@ -95,6 +98,9 @@ class ChatListScreenTest {
 
     @Test
     fun givenUserSheetIsDisplayed_whenNewUserIsSelected_thenViewModelIsNotifiedAndSheetIsHidden() {
+        uiStateFlow.value = uiStateFlow.value.copy(isLoading = false)
+        every { fakeViewModel.uiState } returns uiStateFlow
+
         // Arrange
         composeTestRule.onNodeWithTag("arrowBtn").performClick()
 
@@ -118,7 +124,7 @@ class ChatListScreenTest {
         composeTestRule.onNodeWithTag("userSheet").assertDoesNotExist()
     }
 
-    @Test
+    @Test //
     fun givenMessagesExist_whenScreenIsDisplayed_thenMessagesAndTimestampsAreVisible() {
         // Arrange
         val messages = listOf(
@@ -141,7 +147,7 @@ class ChatListScreenTest {
                 )
             )
         )
-        uiStateFlow.value = uiStateFlow.value.copy(messages = messages)
+        uiStateFlow.value = uiStateFlow.value.copy(messages = messages, isLoading = false)
         every { fakeViewModel.uiState } returns uiStateFlow
 
         composeTestRule.onNodeWithText("Hi").assertIsDisplayed()
@@ -227,6 +233,9 @@ class ChatListScreenTest {
 
     @Test
     fun givenTextInInput_whenSendButtonIsClicked_thenViewModelIsNotified() {
+        uiStateFlow.value = uiStateFlow.value.copy(isLoading = false)
+        every { fakeViewModel.uiState } returns uiStateFlow
+
         // Arrange
         val messageText = "This is a test message"
         composeTestRule.onNodeWithTag("messageChatInput").performTextInput(messageText)
@@ -242,7 +251,7 @@ class ChatListScreenTest {
     @Test
     fun givenMessageInputIsEmpty_whenSendButtonIsClicked_thenActionIsIgnored() {
         // Arrange
-        uiStateFlow.value = uiStateFlow.value.copy(messageText = "")
+        uiStateFlow.value = uiStateFlow.value.copy(messageText = "", isLoading = false)
         every { fakeViewModel.uiState } returns uiStateFlow
 
         // Act
@@ -254,6 +263,9 @@ class ChatListScreenTest {
 
     @Test
     fun givenMessageInputWithText_whenSendButtonIsClicked_thenMessageIsSent() {
+        uiStateFlow.value = uiStateFlow.value.copy(isLoading = false)
+        every { fakeViewModel.uiState } returns uiStateFlow
+
         // Arrange
         composeTestRule.onNodeWithTag("messageChatInput").performTextInput("This is a test message")
 
@@ -267,7 +279,7 @@ class ChatListScreenTest {
     @Test
     fun givenMessageInputIsNotEmpty_whenSendButtonIsEnabledAndClicked_thenSendsMessage() {
         // Arrange
-        uiStateFlow.value = uiStateFlow.value.copy(messageText = "Hi there")
+        uiStateFlow.value = uiStateFlow.value.copy(messageText = "Hi there", isLoading = false)
         every { fakeViewModel.uiState } returns uiStateFlow
 
         // Act
@@ -302,7 +314,7 @@ class ChatListScreenTest {
     @Test
     fun givenNoMessages_whenScreenIsDisplayed_thenEmptyMessageListIsShown() {
         // Arrange
-        uiStateFlow.value = uiStateFlow.value.copy(messages = emptyList())
+        uiStateFlow.value = uiStateFlow.value.copy(messages = emptyList(), isLoading = false)
         every { fakeViewModel.uiState } returns uiStateFlow
 
         // Assert
