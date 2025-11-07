@@ -13,9 +13,11 @@
   </tr>
  </table>
 
-## 🎬 Demo Video
+## 🎥 Watch Full Demo
 
-[▶️ Watch Demo (MP4)](screen-shots/10.mp4)
+- [![Watch on YouTube]](https://youtu.be/G-mfTCNlsQ4?si=4ogzxK8oYoOoTFPu)
+
+- [▶️ Watch Demo (MP4)](screen-shots/10.mp4)
 
 ## Try the App
 Download & install the <a href="apk/app-debug.apk">APK file<a/> to try the app.
