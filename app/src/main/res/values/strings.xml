@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">DChatDemo</string>
+
+    <string name="error_connection">Unable to fetch data, please check your internet connection and try again.</string>
+    <string name="error_service">API service is not responding at the moment, please try again later.</string>
+    <string name="error_unknown">Unknown error occurred.</string>
+    <string name="not_found">Not Found</string>
+    <string name="usage_limit_reached">Usage limit reached</string>
+    <string name="internal_server_error">Internal Server Error</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="unknown_user">Unknown User</string>
+    <string name="clear_chat">Clear Chat</string>
+    <string name="select_user">Select User</string>
+    <string name="press_back_again_to_exit">Press back again to exit</string>
+    <string name="no_chat_to_show">Looks like you don\'t have any chat</string>
+</resources>

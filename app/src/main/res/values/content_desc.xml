@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="back_content_desc">back_content_desc</string>
+    <string name="message_read_desc">message_read_desc</string>
+    <string name="message_delivered_desc">message_delivered_desc</string>
+    <string name="arrow_down_content_desc">arrow_down_content_desc</string>
+    <string name="profile_picture_content_desc">profile_picture</string>
+    <string name="menu_options_content_desc">menu_options</string>
+    <string name="send_message_content_desc">send_message_content_desc</string>
+    <string name="no_stays_image_content_desc">no_stays_yet</string>
+</resources>
