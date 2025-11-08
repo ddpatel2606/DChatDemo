@@ -13,6 +13,16 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
+/**
+ * Unit tests for the [UserRepositoryImpl] class.
+ *
+ * This test class verifies the correctness of the user repository implementation,
+ * focusing on its interaction with the [UsersDao]. It uses MockK for mocking
+ * the DAO and `kotlinx-coroutines-test` for testing suspend functions and Flows.
+ *
+ * @see UserRepositoryImpl
+ * @see UsersDao
+ */
 @ExperimentalCoroutinesApi
 class UserRepositoryImplTest {
 

@@ -18,6 +18,23 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel for the Chat List screen.
+ *
+ * This ViewModel is responsible for managing the state and business logic of the chat screen.
+ * It observes changes in users and messages, handles user interactions like sending messages,
+ * selecting a chat partner, and manages the overall UI state. It uses various use cases
+ * to interact with the data layer.
+ *
+ * The UI state is exposed via a [StateFlow] of [ChatUIState], which contains all the necessary
+ * data for rendering the chat screen, including the list of messages, users, the currently
+ * selected user, and loading/error states.
+ *
+ * @param messagesUseCase Use case for observing and clearing messages.
+ * @param sendMessageUseCase Use case for sending a new message.
+ * @param userUseCase Use case for initializing and observing the list of users.
+ * @param markMessagesAsReadUseCase Use case for marking messages from a specific user as read.
+ */
 @HiltViewModel
 class ChatListViewModel @Inject constructor(
     private val messagesUseCase: MessagesUseCase,

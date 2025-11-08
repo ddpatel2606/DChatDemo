@@ -14,6 +14,24 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/**
+ * Instrumented test class for [UsersDao].
+ *
+ * This class tests the database operations for the `users` table, ensuring that the DAO
+ * functions for inserting, retrieving, and updating user data work as expected. It uses
+ * an in-memory Room database to isolate the tests from the actual application database and
+ * to ensure a clean state for each test run.
+ *
+ * The tests cover:
+ * - Inserting a single user and verifying its retrieval.
+ * - Inserting a list of users and verifying their retrieval.
+ * - Fetching a specific user by their ID.
+ * - Handling cases where a user ID does not exist.
+ * - Verifying that inserting a user with a conflicting ID overwrites the existing entry.
+ *
+ * @see UsersDao
+ * @see AppDatabase
+ */
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 class UsersDaoTest {

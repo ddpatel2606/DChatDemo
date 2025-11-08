@@ -15,6 +15,26 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import java.time.LocalDateTime
 
+/**
+ * Instrumented test class for [MessagesDao].
+ *
+ * This class contains unit tests for the Data Access Object (DAO) responsible for
+ * `MessageEntity` operations. It uses an in-memory Room database to ensure that tests
+ * are hermetic and do not affect the actual application database.
+ *
+ * The tests cover the following functionalities:
+ * - Inserting a new message and verifying it can be retrieved.
+ * - Updating an existing message.
+ * - Marking messages from other users as read.
+ * - Deleting all messages from the database.
+ *
+ * It utilizes `runTest` from `kotlinx-coroutines-test` for testing suspend functions
+ * in a structured and predictable manner.
+ *
+ * @see MessagesDao
+ * @see AppDatabase
+ * @see MessageEntity
+ */
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 class MessagesDaoTest {

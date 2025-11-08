@@ -11,6 +11,13 @@ import java.time.LocalDateTime
 import java.util.UUID
 import javax.inject.Inject
 
+/**
+ * Implementation of the [MessageRepository] interface.
+ * This class handles the data operations related to messages, acting as a single source of truth
+ * by interacting with the local database via [MessagesDao].
+ *
+ * @property messageDao The Data Access Object for message-related database operations.
+ */
 class MessageRepositoryImpl @Inject constructor(
     private val messageDao: MessagesDao
 ) : MessageRepository {

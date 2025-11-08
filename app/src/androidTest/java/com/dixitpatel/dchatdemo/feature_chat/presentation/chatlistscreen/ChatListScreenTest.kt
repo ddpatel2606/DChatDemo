@@ -27,12 +27,33 @@ import org.junit.Rule
 import org.junit.Test
 import java.time.LocalDateTime
 
+/**
+ * UI tests for the [ChatListScreen].
+ *
+ * This test class verifies the functionality and UI behavior of the chat list screen,
+ * including user interactions, state changes, and component visibility. It uses Hilt for
+ * dependency injection and mocks the [ChatListViewModel] to isolate the UI layer and
+ * control the state for various test scenarios.
+ *
+ * The tests cover:
+ * - Initial screen display and correct data rendering.
+ * - User interactions like selecting a different user from a bottom sheet.
+ * - Sending messages and verifying ViewModel interactions.
+ * - Clearing the chat history via the options menu.
+ * - Handling of empty states (no messages) and error states (displaying a snackbar).
+ * - UI element states, such as the enabled/disabled state of the send button.
+ *
+ * @see ChatListScreen
+ * @see ChatListViewModel
+ */
 @HiltAndroidTest
 class ChatListScreenTest {
 
+    //Hilt Rule
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
 
+    //Compose Rule
     @get:Rule(order = 1)
     val composeTestRule = createAndroidComposeRule<HiltTestActivity>()
 

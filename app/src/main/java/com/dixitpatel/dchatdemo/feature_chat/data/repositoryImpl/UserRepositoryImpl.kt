@@ -14,6 +14,13 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
+/**
+ * Implementation of the [UserRepository] interface.
+ * This class is responsible for handling user data operations, acting as a single source of truth
+ * for user-related information. It interacts with the local database via the [UsersDao].
+ *
+ * @property userDao The Data Access Object for interacting with the user table in the database.
+ */
 class UserRepositoryImpl @Inject constructor(
     private val userDao: UsersDao
 ) : UserRepository {

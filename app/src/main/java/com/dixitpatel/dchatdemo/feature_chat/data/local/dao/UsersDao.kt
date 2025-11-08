@@ -7,6 +7,10 @@ import androidx.room.Query
 import com.dixitpatel.dchatdemo.feature_chat.data.local.entity.UserEntity
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Data Access Object (DAO) for the [UserEntity] table.
+ * Provides methods for accessing and manipulating user data in the local Room database.
+ */
 @Dao
 interface UsersDao {
     @Query("SELECT * FROM users")

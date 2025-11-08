@@ -10,6 +10,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalContext
 
+/**
+ * A Composable function that applies the application's theme to the UI content.
+ *
+ * This theme wrapper sets up the color scheme, typography, and custom dimensions
+ * for the descendant Composable. It supports both light and dark themes, as well as
+ * dynamic theming on Android 12 and above.
+ *
+ * @param darkTheme Whether the theme should be in dark mode. Defaults to the system's setting.
+ * @param dynamicColor Whether to use a dynamic color scheme based on the user's wallpaper.
+ *                     This is only available on Android 12 and newer. Defaults to `true`.
+ * @param content The Composable content to which the theme will be applied.
+ */
 @Composable
 fun DChatDemoTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),

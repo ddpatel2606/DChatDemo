@@ -9,6 +9,17 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
+/**
+ * Unit tests for the [SendMessageUseCase].
+ *
+ * This test class verifies the core logic of the `SendMessageUseCase`, ensuring that:
+ * 1. It correctly calls the repository to send a message when the content is valid (non-blank).
+ * 2. It trims whitespace from the message content before sending it.
+ * 3. It prevents sending messages with blank or whitespace-only content.
+ *
+ * MockK is used to create a mock [MessageRepository] to isolate the use case logic for testing.
+ * The tests are executed using `runTest` from the `kotlinx-coroutines-test` library to handle suspend functions.
+ */
 @ExperimentalCoroutinesApi
 class SendMessageUseCaseTest {
 

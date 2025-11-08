@@ -23,6 +23,22 @@ import org.junit.Before
 import org.junit.Test
 import java.time.LocalDateTime
 
+/**
+ * Unit tests for the [ChatListViewModel].
+ *
+ * This class tests the various functionalities of the [ChatListViewModel], including:
+ * - State initialization and updates.
+ * - User interactions such as sending messages, changing the selected user, and typing messages.
+ * - Clearing chat history.
+ *
+ * It also includes tests for the underlying use cases ([SendMessageUseCase], [MessagesUseCase],
+ * [UserUseCase], and [MarkMessagesAsReadUseCase]) to ensure they interact correctly with their
+ * respective repositories.
+ *
+ * Mocks are used for repository dependencies to isolate the components under test.
+ * [runTest] from `kotlinx-coroutines-test` is used to test suspend functions and Flows.
+ * [Turbine](https://github.com/cashapp/turbine) is used for testing `StateFlow` emissions.
+ */
 @ExperimentalCoroutinesApi
 class ChatListViewModelTest {
 

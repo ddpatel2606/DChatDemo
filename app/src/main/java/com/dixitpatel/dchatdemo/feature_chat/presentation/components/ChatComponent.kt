@@ -26,7 +26,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -46,17 +45,29 @@ import com.dixitpatel.dchatdemo.feature_chat.data.consts.ALEX_USER_ID
 import com.dixitpatel.dchatdemo.feature_chat.data.consts.SARA_USER_ID
 import com.dixitpatel.dchatdemo.feature_chat.domain.models.Message
 import com.dixitpatel.dchatdemo.feature_chat.domain.models.MessageGroup
+import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.DChatDemoTheme
 import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.DarkGray
 import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.LightGray
-import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.DChatDemoTheme
 import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.MessageBubbleReceived
 import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.MessageBubbleSent
 import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.MessageSentDoubleTick
 import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.MessageSentSingleTick
 import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.PrimaryPink
 import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.SecondaryPink
+import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.dimens
 import java.time.LocalDateTime
 
+/**
+ * A Composable that displays a group of messages from the same sender in a chat.
+ *
+ * This component arranges messages within a `Column`. It optionally displays a timestamp
+ * at the top of the group if `isTimestampShow` is true. It then iterates through the
+ * list of messages in the group, rendering each one using the `MessageBubbleItem` composable.
+ *
+ * @param messageGroup The [MessageGroup] object containing the list of messages and an optional timestamp.
+ * @param currentUserId The ID of the currently logged-in user, used to determine if a message
+ *                      is sent by them (for alignment and styling purposes).
+ */
 @Composable
 fun MessageGroupItem(
     messageGroup: MessageGroup, currentUserId: String
@@ -77,6 +88,12 @@ fun MessageGroupItem(
     }
 }
 
+/**
+ * A composable that displays a centered timestamp label within a full-width box.
+ * This is typically used to show dates or times as separators between groups of messages.
+ *
+ * @param text The string content of the timestamp to be displayed.
+ */
 @Composable
 private fun TimestampLabel(text: String) {
     Box(
@@ -90,6 +107,23 @@ private fun TimestampLabel(text: String) {
     }
 }
 
+/**
+ * Displays a single chat message bubble.
+ *
+ * This composable function is responsible for rendering an individual message. It aligns
+ * the bubble to the start or end of the row based on whether the message is from the
+ * current user. The bubble's shape, color, and text color are also styled accordingly.
+ *
+ * For messages sent by the current user, it includes a read/delivered status icon
+ * (a single or double tick) neatly positioned below the message text. This is achieved
+ * using a `SubcomposeLayout` to ensure the icon row has the same width as the text and
+ * is placed correctly without disrupting the bubble's size calculation.
+ *
+ * @param message The [Message] object containing the content and metadata of the message.
+ * @param isFromCurrentUser A boolean flag indicating if the message was sent by the
+ *                          currently logged-in user. This determines the bubble's alignment
+ *                          and styling.
+ */
 @Composable
 fun MessageBubbleItem(
     message: Message, isFromCurrentUser: Boolean
@@ -102,28 +136,25 @@ fun MessageBubbleItem(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = if (isFromCurrentUser) Arrangement.End else Arrangement.Start
     ) {
-        if (!isFromCurrentUser) {
-            Spacer(modifier = Modifier.width(8.dp))
-        }
 
         Card(
             modifier = Modifier
                 .widthIn(max = 280.dp)
                 .padding(
-                    start = if (isFromCurrentUser) 48.dp else 0.dp,
-                    end = if (!isFromCurrentUser) 48.dp else 0.dp,
-                    top = 6.dp
+                    start = if (isFromCurrentUser) MaterialTheme.dimens.xl3 else 0.dp,
+                    end = if (!isFromCurrentUser) MaterialTheme.dimens.xl3 else 0.dp,
+                    top = 3.dp
                 ), colors = CardDefaults.cardColors(
                 containerColor = bubbleColor
             ), shape = RoundedCornerShape(
-                topStart = 18.dp,
-                topEnd = 18.dp,
-                bottomStart = if (!isFromCurrentUser) 1.dp else 18.dp,
-                bottomEnd = if (isFromCurrentUser) 1.dp else 18.dp
+                topStart = MaterialTheme.dimens.ml,
+                topEnd = MaterialTheme.dimens.ml,
+                bottomStart = if (!isFromCurrentUser) 1.dp else MaterialTheme.dimens.ml,
+                bottomEnd = if (isFromCurrentUser) 1.dp else MaterialTheme.dimens.ml
             )
         ) {
             Box(
-                modifier = Modifier.padding(12.dp)
+                modifier = Modifier.padding(MaterialTheme.dimens.s)
             ) {
                 SubcomposeLayout { constraints ->
                     val textPlaceable = subcompose("text") {
@@ -148,7 +179,7 @@ fun MessageBubbleItem(
                                         stringResource(R.string.message_delivered_desc)
                                     },
                                     tint = if (message.isRead) MessageSentDoubleTick else MessageSentSingleTick,
-                                    modifier = Modifier.size(16.dp)
+                                    modifier = Modifier.size(MaterialTheme.dimens.m)
                                 )
                             }
                         }
@@ -174,6 +205,19 @@ fun MessageBubbleItem(
     }
 }
 
+/**
+ * A composable that provides a text input field and a send button for a chat interface.
+ *
+ * This component consists of an `OutlinedTextField` for message input and a `FloatingActionButton`
+ * to send the message. The layout is a `Row` that fills the screen's width and handles
+ * padding for the soft keyboard (`imePadding`). The send button's appearance and enabled
+ * state are conditional on whether the `messageText` is blank or not.
+ *
+ * @param messageText The current text value of the input field.
+ * @param onMessageTextChanged A callback function that is invoked when the user types in the
+ *                             input field. It provides the updated text.
+ * @param onSendMessage A callback function that is invoked when the user clicks the send button.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MessageChatInput(
@@ -182,9 +226,9 @@ fun MessageChatInput(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(MaterialTheme.dimens.xs)
             .imePadding(),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.dimens.xs),
         verticalAlignment = Alignment.CenterVertically
     ) {
         OutlinedTextField(
@@ -192,8 +236,7 @@ fun MessageChatInput(
             onValueChange = onMessageTextChanged,
             modifier = Modifier
                 .weight(1f)
-                .testTag("messageChatInput")
-                .imePadding(),
+                .testTag("messageChatInput"),
             shape = RoundedCornerShape(32.dp),
             maxLines = 6,
             textStyle = MaterialTheme.typography.titleLarge,
@@ -213,7 +256,7 @@ fun MessageChatInput(
         FloatingActionButton(
             onClick = onSendMessage,
             modifier = Modifier
-                .size(48.dp)
+                .size(MaterialTheme.dimens.xl3)
                 .clip(CircleShape)
                 .testTag("sendBtn"),
             containerColor = if (messageText.isNotBlank()) PrimaryPink else SecondaryPink

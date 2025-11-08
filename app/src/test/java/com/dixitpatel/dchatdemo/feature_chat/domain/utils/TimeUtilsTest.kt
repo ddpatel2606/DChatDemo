@@ -5,6 +5,14 @@ import org.junit.Test
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
+/**
+ * Unit tests for the [LocalDateTime] extension functions defined in `TimeUtils.kt`.
+ * This class verifies the correctness of time calculation and formatting logic.
+ *
+ * @see secondsUntil
+ * @see hourUntil
+ * @see formatPrettyTimestamp
+ */
 class LocalDateTimeExtensionsTest {
 
     @Test

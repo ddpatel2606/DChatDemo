@@ -14,6 +14,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.DChatDemoTheme
 import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.dimens
 
+/**
+ * A composable function that displays a loading indicator.
+ * It shows a centered [CircularProgressIndicator] within a [Box] that fills the maximum size.
+ * This is typically used to indicate that content is being loaded in the background.
+ *
+ * @param modifier The modifier to be applied to the component. Defaults to [Modifier].
+ */
 @Composable
 fun LoadingComponent(modifier: Modifier = Modifier) {
     Box(

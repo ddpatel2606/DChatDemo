@@ -5,6 +5,11 @@ import com.dixitpatel.dchatdemo.feature_chat.data.local.entity.UserEntity
 import com.dixitpatel.dchatdemo.feature_chat.domain.models.Message
 import com.dixitpatel.dchatdemo.feature_chat.domain.models.User
 
+/**
+ * Maps a [MessageEntity] (data layer) to a [Message] (domain layer).
+ * This is an extension function on [MessageEntity].
+ * @return The corresponding [Message] domain model.
+ */
 fun MessageEntity.toMessage(): Message {
     return Message(
         id = id,
@@ -15,6 +20,12 @@ fun MessageEntity.toMessage(): Message {
     )
 }
 
+/**
+ * Maps a [UserEntity] (data layer) to a [User] (domain layer).
+ * This is an extension function on [UserEntity].
+ *
+ * @return The corresponding [User] domain model.
+ */
 fun UserEntity.toUser(): User {
     return User(
         id = id,

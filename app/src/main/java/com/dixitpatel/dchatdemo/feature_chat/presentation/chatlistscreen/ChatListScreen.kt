@@ -30,7 +30,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.dixitpatel.dchatdemo.R
@@ -38,12 +37,22 @@ import com.dixitpatel.dchatdemo.feature_chat.domain.models.User
 import com.dixitpatel.dchatdemo.feature_chat.presentation.components.ChatTopBar
 import com.dixitpatel.dchatdemo.feature_chat.presentation.components.EmptyView
 import com.dixitpatel.dchatdemo.feature_chat.presentation.components.LoadingComponent
-import com.dixitpatel.dchatdemo.feature_chat.presentation.components.MessageGroupItem
 import com.dixitpatel.dchatdemo.feature_chat.presentation.components.MessageChatInput
+import com.dixitpatel.dchatdemo.feature_chat.presentation.components.MessageGroupItem
 import com.dixitpatel.dchatdemo.feature_chat.presentation.components.UserSelectionSheet
 import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.dimens
 import kotlinx.coroutines.delay
 
+/**
+ * A Composable function that represents the main chat screen.
+ *
+ * This function serves as the entry point for the chat feature's UI. It observes the
+ * state from the [ChatListViewModel] and passes it down to the [ChatListContent]
+ * composable, which is responsible for rendering the actual UI elements. It also
+ * connects the ViewModel's event handlers to the corresponding UI actions.
+ *
+ * @param viewModel An instance of [ChatListViewModel], provided by Hilt, which manages the state and business logic of the chat screen.
+ */
 @Composable
 fun ChatListScreen(
     viewModel: ChatListViewModel = hiltViewModel()
@@ -133,8 +142,8 @@ fun ChatListContent(
     ) { padding ->
         Box(
             modifier = Modifier
-                .padding(padding)
                 .fillMaxSize()
+                .padding(padding)
                 .clickable { showUserSheet = false }
         ) {
             if (uiState.isLoading) {
@@ -153,8 +162,8 @@ fun ChatListContent(
                         LazyColumn(
                             state = listState,
                             modifier = Modifier.weight(1f),
-                            contentPadding = PaddingValues(16.dp),
-                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                            contentPadding = PaddingValues(MaterialTheme.dimens.m),
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.dimens.xs)
                         ) {
                             items(uiState.messages) { messageGroup ->
                                 MessageGroupItem(

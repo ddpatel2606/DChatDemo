@@ -9,6 +9,13 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
+/**
+ * Unit tests for the [MarkMessagesAsReadUseCase].
+ *
+ * This test class verifies that the use case correctly interacts with its underlying
+ * [MessageRepository] when invoked. It uses `mockk` for mocking dependencies and
+ * `kotlinx-coroutines-test` for testing suspend functions.
+ */
 @ExperimentalCoroutinesApi
 class MarkMessagesAsReadUseCaseTest {
 

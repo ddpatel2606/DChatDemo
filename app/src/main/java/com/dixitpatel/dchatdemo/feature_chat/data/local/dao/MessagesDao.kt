@@ -8,6 +8,10 @@ import androidx.room.Update
 import com.dixitpatel.dchatdemo.feature_chat.data.local.entity.MessageEntity
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Data Access Object (DAO) for the message table.
+ * Provides methods for accessing and manipulating message data in the local database.
+ */
 @Dao
 interface MessagesDao {
     @Query("SELECT * FROM chats ORDER BY timestamp ASC")

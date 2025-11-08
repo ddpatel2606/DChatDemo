@@ -44,7 +44,20 @@ import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.DarkGray
 import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.LightGray
 import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.MessageBubbleReceived
 import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.PrimaryPink
+import com.dixitpatel.dchatdemo.feature_chat.presentation.theme.dimens
 
+/**
+ * A composable function that displays the top app bar for the chat screen.
+ * It includes a back button, the current user's avatar and name, and an options menu.
+ *
+ * @param uiState The current state of the chat UI, containing information like the selected user.
+ * @param onBackClick A lambda function to be invoked when the back button is clicked.
+ * @param onToggleUserSheet A lambda function to be invoked when the user's name or avatar is clicked, typically to show a user selection sheet.
+ * @param onShowMenu A lambda function to be invoked to show the dropdown menu.
+ * @param showMenu A boolean indicating whether the dropdown menu should be shown.
+ * @param onClearChat A lambda function to be invoked when the "Clear Chat" option is selected from the menu.
+ * @param onDismiss A lambda function to be invoked when the dropdown menu is dismissed.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChatTopBar(
@@ -70,7 +83,7 @@ fun ChatTopBar(
             verticalAlignment = Alignment.CenterVertically
         ) {
             UserAvatar(uiState.selectedUser?.profilePic ?: R.drawable.ic_empty_profile)
-            Spacer(Modifier.width(12.dp))
+            Spacer(Modifier.width(MaterialTheme.dimens.s))
             Text(
                 text = uiState.selectedUser?.name ?: stringResource(R.string.unknown_user),
                 style = MaterialTheme.typography.titleMedium,
@@ -94,6 +107,12 @@ fun ChatTopBar(
     })
 }
 
+/**
+ * A composable function that displays a circular user avatar.
+ * The avatar is a clipped circular image with a pink background.
+ *
+ * @param image The drawable resource ID for the user's avatar image.
+ */
 @Composable
 private fun UserAvatar(image: Int) {
     Box(
@@ -110,6 +129,15 @@ private fun UserAvatar(image: Int) {
     }
 }
 
+/**
+ * A composable that displays a menu button (three dots icon) which, when clicked,
+ * shows a dropdown menu. The menu currently contains an option to "Clear chat".
+ *
+ * @param expanded Whether the dropdown menu is currently visible.
+ * @param onShowMenu Lambda to be invoked when the menu button is clicked, used to show the menu.
+ * @param onDismiss Lambda to be invoked when the user requests to dismiss the menu (e.g., by tapping outside of it).
+ * @param onClearChat Lambda to be invoked when the "Clear chat" menu item is clicked.
+ */
 @Composable
 private fun DropdownMenuButton(
     expanded: Boolean, onShowMenu: () -> Unit, onDismiss: () -> Unit, onClearChat: () -> Unit
@@ -139,6 +167,17 @@ private fun DropdownMenuButton(
     }
 }
 
+/**
+ * A composable that displays a sheet for selecting a user from a list.
+ * The sheet appears with a slide-down animation and contains a list of available users.
+ * The currently selected user is highlighted.
+ *
+ * @param modifier The modifier to be applied to the component.
+ * @param visible Controls the visibility of the sheet. If true, the sheet is shown.
+ * @param users The list of [User] objects to display.
+ * @param selected The ID of the currently selected user, used for highlighting. Can be null if no user is selected.
+ * @param onUserClick A lambda function that is invoked when a user row is clicked, passing the selected [User].
+ */
 @Composable
 fun UserSelectionSheet(
     modifier: Modifier = Modifier,
@@ -159,12 +198,12 @@ fun UserSelectionSheet(
                 .shadow(2.dp).testTag("userSheet"),
             colors = CardDefaults.cardColors(MaterialTheme.colorScheme.surface)
         ) {
-            Column(Modifier.padding(12.dp)) {
+            Column(Modifier.padding(MaterialTheme.dimens.s)) {
                 Text(
                     stringResource(R.string.select_user),
                     style = MaterialTheme.typography.titleMedium
                 )
-                Spacer(Modifier.height(8.dp))
+                Spacer(Modifier.height(MaterialTheme.dimens.xs))
 
                 users.forEach { user ->
                     val selectedBg = if (user.id == selected) MessageBubbleReceived
@@ -177,7 +216,7 @@ fun UserSelectionSheet(
                         .padding(10.dp)
                         .testTag("userSheetRow")) {
                         UserAvatar(user.profilePic)
-                        Spacer(Modifier.width(12.dp))
+                        Spacer(Modifier.width(MaterialTheme.dimens.s))
                         Text(
                             user.name, style = MaterialTheme.typography.titleMedium
                         )

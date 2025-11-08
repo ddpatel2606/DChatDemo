@@ -10,6 +10,15 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
+/**
+ * A use case that retrieves and processes chat messages.
+ *
+ * This class is responsible for fetching all messages from the [MessageRepository],
+ * grouping them into [MessageGroup]s based on sender and time, and providing a flow of these groups.
+ * It also offers a method to clear all chat messages.
+ *
+ * @property messageRepository The repository for accessing message data.
+ */
 class MessagesUseCase @Inject constructor(
     private val messageRepository: MessageRepository
 ) {

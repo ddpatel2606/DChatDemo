@@ -9,6 +9,13 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
+/**
+ * Hilt module that provides repository bindings.
+ * This abstract class is used by Dagger Hilt to provide instances of repository interfaces.
+ *
+ * It is installed in the [SingletonComponent], meaning the provided repositories will have a singleton scope
+ * and live as long as the application.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {

@@ -6,8 +6,21 @@ import androidx.test.runner.AndroidJUnitRunner
 import dagger.hilt.android.testing.HiltTestApplication
 
 /**
- *  HiltTestRunner
- *  This is Instrument Test runner And Used as HiltTestApplication.
+ * A custom [AndroidJUnitRunner] for Hilt instrumented tests.
+ *
+ * This runner is essential for Hilt's test support, as it overrides the `newApplication`
+ * method to instantiate a [HiltTestApplication] instead of the standard application class.
+ * This ensures that Hilt can properly manage dependencies and create test-specific
+ * component hierarchies for instrumentation tests.
+ *
+ * To use this runner, specify it in your app's `build.gradle` file:
+ * ```
+ * android {
+ *     defaultConfig {
+ *         testInstrumentationRunner "com.dixitpatel.dchatdemo.HiltTestRunner"
+ *     }
+ * }
+ * ```
  */
 class HiltTestRunner : AndroidJUnitRunner() {
 

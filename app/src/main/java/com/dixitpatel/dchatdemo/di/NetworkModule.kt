@@ -24,6 +24,14 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 
+/**
+ * Dagger Hilt module that provides network-related dependencies for the application.
+ *
+ * This module is responsible for setting up and configuring networking components like
+ * OkHttpClient, Retrofit, and the API service interface. It provides different
+ * configurations for debug and release builds, such as enabling logging and certificate
+ * transparency.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {

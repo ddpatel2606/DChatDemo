@@ -11,13 +11,10 @@
       <SelectionState runConfigName="Tests in 'com'">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="givenMessageInputWithText_whenSendButtonIsClicked_thenMessageIsSent()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="givenUserSheetIsDisplayed_whenNewUserIsSelected_thenViewModelIsNotifiedAndSheetIsHidden()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="givenUserSheetIsHidden_whenUserSelectionArrowIsClicked_thenUserSheetIsDisplayed()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="All Tests">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

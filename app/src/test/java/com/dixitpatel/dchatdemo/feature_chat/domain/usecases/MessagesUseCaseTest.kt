@@ -15,6 +15,20 @@ import org.junit.Before
 import org.junit.Test
 import java.time.LocalDateTime
 
+/**
+ * Unit tests for the [MessagesUseCase].
+ *
+ * This test class verifies the functionality of the `MessagesUseCase`, ensuring that it correctly
+ * fetches, processes, and groups messages from the repository. It also tests the message clearing functionality.
+ *
+ * Test cases include:
+ * - Verifying that messages are correctly grouped based on sender and timestamp.
+ * - Ensuring that clearing messages correctly invokes the repository's clear method.
+ * - Confirming that an empty list is returned when the repository has no messages.
+ *
+ * @see MessagesUseCase
+ * @see MessageRepository
+ */
 @ExperimentalCoroutinesApi
 class MessagesUseCaseTest {
 

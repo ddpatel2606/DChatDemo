@@ -15,9 +15,9 @@
 
 ## 🎥 Watch Full Demo
 
-- [![Watch on YouTube]](https://youtu.be/G-mfTCNlsQ4?si=4ogzxK8oYoOoTFPu)
+- [Watch on YouTube](https://youtu.be/G-mfTCNlsQ4?si=4ogzxK8oYoOoTFPu)
 
-- [▶️ Watch Demo (MP4)](screen-shots/10.mp4)
+- [Download Demo Video (MP4)](screen-shots/10.mp4)
 
 ## Try the App
 Download & install the <a href="apk/app-debug.apk">APK file<a/> to try the app.
@@ -231,7 +231,7 @@ Implement a comprehensive multi-layer testing strategy using industry-standard t
 ### ⏰ Time Formatting
 
 **`Assumption`**: Uses a standardized relative time format —
-“Today”, “Yesterday”, “Day of Week”, or “Full Date”.
+“Today”, “Yesterday”, or a formatted date string.
 
 **`Justification`**:
 -	Aligns with modern messaging app conventions (e.g., WhatsApp, Telegram).
@@ -276,18 +276,18 @@ Implement a comprehensive multi-layer testing strategy using industry-standard t
 This demo project focuses on **Clean Architecture**, **local data flow**, and **UI/UX patterns** — not on full-scale production chat functionality.  
 Below are the current known limitations and potential future improvements:
 
-| 🧩 Area | 🚫 Limitation                                                 | 🚀 Future Improvement |
-|:--------|:--------------------------------------------------------------|:----------------------|
-| **Networking** | No network layer – all messages are stored locally using Room | Add WebSocket or REST API for real-time message sync and cloud persistence |
-| **Conversations** | Single hardcoded conversation (e.g., “Sara”, "Alex")          | Implement conversation list with multiple user threads |
-| **Media Support** | Only text messages supported                                  | Add media picker for images, audio, and file attachments |
-| **Animations** | Basic send/receive transitions only                           | Introduce smoother message bubble animations and micro-interactions |
-| **Read Receipts** | Missing visual checkmarks for sent/read states                | Add `isRead` flag with ✓ (sent) and ✓✓ (read) indicators |
-| **Typing Indicators** | Not implemented                                               | Add “User is typing…” indicators using Flow or socket events |
-| **Error Handling** | Limited — errors logged but not displayed to user             | Add user-friendly error messages and retry actions |
-| **Pagination** | Loads all messages at once                                    | Add pagination or lazy loading for large message histories |
-| **User Switching** | Two predefined users only (Sara & Alex)                       | Extend to dynamic user accounts with authentication flow |
-
+| 🧩 Area                  | 🚫 Limitation                                                                     | 🚀 Future Improvement |
+|:-------------------------|:----------------------------------------------------------------------------------|:----------------------|
+| **Networking**           | No network layer – all messages are stored locally using Room                     | Add WebSocket or REST API for real-time message sync and cloud persistence |
+| **Conversations**        | Single hardcoded conversation (e.g., “Sara”, "Alex")                              | Implement conversation list with multiple user threads |
+| **Media Support**        | Only text messages supported                                                      | Add media picker for images, audio, and file attachments |
+| **Animations**           | Basic send/receive transitions only                                               | Introduce smoother message bubble animations and micro-interactions |
+| **Read Receipts**        | Missing visual checkmarks for sent/read states                                    | Add `isRead` flag with ✓ (sent) and ✓✓ (read) indicators |
+| **Typing Indicators**    | Not implemented                                                                   | Add “User is typing…” indicators using Flow or socket events |
+| **Error Handling**       | Limited — errors logged but not displayed to user                                 | Add user-friendly error messages and retry actions |
+| **Pagination**           | Loads all messages at once                                                        | Add pagination or lazy loading for large message histories |
+| **User Switching**       | Two predefined users only (Sara & Alex)                                           | Extend to dynamic user accounts with authentication flow |
+| **Dark and Light Theme** | Supported Light Theme at the moment but already done setup for dark theme as well | Extend to dynamic theme selection |
 
 ---
 

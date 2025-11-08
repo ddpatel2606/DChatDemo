@@ -14,6 +14,20 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
+/**
+ * Unit tests for the [UserUseCase].
+ *
+ * This test class verifies the behavior of the `UserUseCase` by mocking its
+ * dependency, [UserRepository], and asserting that the use case interacts with the
+ * repository as expected. It uses `MockK` for mocking and `kotlinx-coroutines-test`
+ * for testing coroutine-based logic.
+ *
+ * The tests cover two main scenarios:
+ * 1.  Invoking the use case to ensure it correctly fetches and returns a flow of users
+ *     from the repository.
+ * 2.  Calling the `initialiseUsers` method to confirm it properly delegates the call
+ *     to the repository's `initializeUsers` function.
+ */
 @ExperimentalCoroutinesApi
 class UserUseCaseTest {
 

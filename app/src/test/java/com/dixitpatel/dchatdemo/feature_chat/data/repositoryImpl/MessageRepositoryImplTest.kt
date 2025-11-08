@@ -18,6 +18,19 @@ import org.junit.Before
 import org.junit.Test
 import java.time.LocalDateTime
 
+/**
+ * Unit tests for the [MessageRepositoryImpl] class.
+ *
+ * This test class verifies the correctness of the repository's interaction with the [MessagesDao].
+ * It uses MockK for mocking the DAO and `runTest` from `kotlinx-coroutines-test` for testing suspend functions
+ * and flows in a structured and predictable manner.
+ *
+ * The tests cover the following functionalities:
+ * - Retrieving all messages and ensuring correct mapping from [MessageEntity] to [Message].
+ * - Sending a new message and verifying that it's correctly passed to the DAO for insertion.
+ * - Marking messages as read and confirming the DAO method is called with the right user ID.
+ * - Clearing all chat messages and ensuring the corresponding DAO deletion method is invoked.
+ */
 @ExperimentalCoroutinesApi
 class MessageRepositoryImplTest {
 

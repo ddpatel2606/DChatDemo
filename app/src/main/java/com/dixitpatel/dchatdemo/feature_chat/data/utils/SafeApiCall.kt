@@ -12,6 +12,15 @@ import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/**
+ * A utility class that provides a safe way to execute network API calls.
+ * It wraps the suspend function call in a try-catch block to handle exceptions
+ * and returns a `Resource` object, which encapsulates the result (success or error).
+ * This helps in centralizing error handling logic for network operations.
+ *
+ * @property context The application context, used to retrieve string resources for error messages.
+ * @property coroutineDispatcher The coroutine dispatcher on which the network call will be executed.
+ */
 @Singleton
 open class SafeApiCall @Inject constructor(@ApplicationContext val context: Context, val coroutineDispatcher: CoroutineDispatcher) {
 

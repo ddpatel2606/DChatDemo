@@ -10,7 +10,6 @@ plugins {
 android {
     namespace 'com.dixitpatel.dchatdemo'
     compileSdk = 36
-    buildToolsVersion = "36.0.0"
 
     defaultConfig {
         applicationId "com.dixitpatel.dchatdemo"
@@ -40,7 +39,8 @@ android {
             enableAndroidTestCoverage true
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true // Enable resource shrinking
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -93,7 +93,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'com.google.android.material:material:1.13.0'
 
-    // Certificate Transparency : For Security
+    // Certificate Transparency : For API Security
     implementation 'com.appmattus.certificatetransparency:certificatetransparency-android:2.8.7'
 
     // Compose
